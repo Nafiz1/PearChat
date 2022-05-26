@@ -1,5 +1,6 @@
 body {
     background-color: #282c34;
+    overflow-y: hidden;
 }
 
 .App {
@@ -9,7 +10,7 @@ body {
 }
 
 .App header {
-    background-color: #181717;
+    background-color: #373333;
     height: 10vh;
     min-height: 50px;
     color: white;
@@ -30,7 +31,7 @@ body {
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
-    background-color: rgb(40, 37, 53);
+    background-color: rgb(215, 215, 215);
 }
 
 main {
@@ -51,7 +52,7 @@ main::-webkit-scrollbar-track {
 }
 
 main::-webkit-scrollbar-thumb {
-    background: #6649b8;
+    background: rgb(140, 156, 0);
 }
 
 form {
@@ -67,7 +68,7 @@ form {
 
 form button {
     width: 20%;
-    background-color: rgb(56, 56, 143);
+    background-color: #363337;
 }
 
 input {
@@ -84,6 +85,7 @@ input {
 button {
     background-color: #282c34; /* Green */
     border: none;
+    border-radius: 0%;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -122,6 +124,11 @@ p {
     text-align: center;
 }
 
+.sign-in-para {
+    color: rgb(140, 156, 0);
+    text-align: center;
+}
+
 .message {
     display: flex;
     align-items: center;
@@ -146,4 +153,12 @@ img {
     height: 40px;
     border-radius: 50%;
     margin: 2px 5px;
+}
+
+.logo {
+    border-radius: 0%;
+    max-width: 230px;
+    max-height: 63px;
+    width: auto;
+    height: auto;
 }

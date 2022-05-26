@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 import firebase from "firebase/compat/app";
@@ -8,6 +7,8 @@ import "firebase/compat/auth";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+
+import logo from "./assets/logo.png";
 
 firebase.initializeApp({
     apiKey: "AIzaSyCo2XYizpJeoViHfRmptjU1kV-TthZygaI",
@@ -27,7 +28,7 @@ function App() {
     return (
         <div className="App">
             <header>
-                <h1>⚛️🔥💬</h1>
+                <img className="logo" src={logo} alt="PinkPear logo" />
                 <SignOut />
             </header>
 
@@ -47,7 +48,7 @@ function SignIn() {
             <button className="sign-in" onClick={signInWithGoogle}>
                 Sign in with Google
             </button>
-            <p>Do not violate the community guidelines or you will be banned for life!</p>
+            <h1 className="sign-in-para">A place to talk about pears.</h1>
         </>
     );
 }
@@ -103,7 +104,7 @@ function ChatRoom() {
                 />
 
                 <button type="submit" disabled={!formValue}>
-                    🕊️
+                    🍐
                 </button>
             </form>
         </>
