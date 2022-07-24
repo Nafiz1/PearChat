@@ -11,7 +11,7 @@ import logo from "./assets/logo.png";
 import pearVideo from "./assets/share.mp4";
 
 firebase.initializeApp({
-    apiKey: "AIzaSyCo2XYizpJeoViHfRmptjU1kV-TthZygaI",
+    apiKey: process.env.REACT_APP_API_KEY,
     authDomain: "pearchat-24457.firebaseapp.com",
     projectId: "pearchat-24457",
     storageBucket: "pearchat-24457.appspot.com",
@@ -26,7 +26,7 @@ function App() {
     const [user] = useAuthState(auth);
 
     return (
-        <div className="bg-mainColor ">
+        <div className="bg-mainColor dark:bg-[#282c34]">
             <header>
                 <SignOut />
             </header>
@@ -94,7 +94,7 @@ function SignIn() {
 function SignOut() {
     return (
         auth.currentUser && (
-            <div className="fixed inset-x-0 top-0 bg-header p-5 flex justify-between rounded-b-[30px] mb-5">
+            <div className="fixed inset-x-0 top-0 bg-header p-5 flex justify-between flex-wrap rounded-b-[30px]">
                 <img src={logo} alt="Pear logo" width="200em" />
                 <button
                     onClick={() => auth.signOut()}
@@ -135,7 +135,7 @@ function ChatRoom() {
 
     return (
         <div className="">
-            <main className="pt-36 pb-40 h-full scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100">
+            <main className="pt-40 pb-40 h-full">
                 <div className="pb-2">
                     {messages && messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
 
@@ -151,7 +151,7 @@ function ChatRoom() {
             <form onSubmit={sendMessage}>
                 <div className="fixed inset-x-0 mb-4 bottom-12 h-12 flex justify-center">
                     <input
-                        class="w-2/3 mr-2 pr-3 pl-4 py-2 placeholder-gray-500 text-black rounded-l-2xl border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2"
+                        class="w-2/3 mr-2 pr-3 pl-4 py-2 placeholder-gray-500 text-black rounded-l-2xl border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:ring-black"
                         value={formValue}
                         onChange={(e) => setFormValue(e.target.value)}
                         placeholder="Say something nice"
@@ -188,7 +188,7 @@ function ChatMessage(props) {
                     className={`rounded-full h-12 ${imgProp}`}
                     src={photoURL || "https://api.adorable.io/avatars/23/abott@adorable.png"}
                 />
-                <p className="max-w-xs lg:max-w-4xl text-base break-words">{text}</p>
+                <p className="max-w-[50vw] lg:max-w-4xl text-base break-words">{text}</p>
             </div>
         </div>
     );
