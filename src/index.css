@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
 body {
     font-family: "lato", sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(140, 156, 0);
 }

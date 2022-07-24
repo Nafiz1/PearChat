@@ -26,7 +26,7 @@ function App() {
     const [user] = useAuthState(auth);
 
     return (
-        <div className="bg-mainColor">
+        <div className="bg-mainColor ">
             <header>
                 <SignOut />
             </header>
@@ -135,21 +135,18 @@ function ChatRoom() {
 
     return (
         <div className="">
-            <div className="scrollbar">
-                <main className="pt-36 pb-40">
-                    <div className="pb-2">
-                        {messages &&
-                            messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+            <main className="pt-36 pb-40 h-full scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100">
+                <div className="pb-2">
+                    {messages && messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
 
-                        <span ref={dummy}></span>
-                    </div>
-                    <div className="fixed inset-x-0 bottom-0 bg-header h-32 flex justify-center items-end rounded-t-[30px]">
-                        <p className="p-3 text-lg font-normal leading-normal text-primary">
-                            © 2022 | Nafiz
-                        </p>
-                    </div>
-                </main>
-            </div>
+                    <span ref={dummy}></span>
+                </div>
+                <div className="fixed inset-x-0 bottom-0 bg-header h-32 flex justify-center items-end rounded-t-[30px]">
+                    <p className="p-3 text-lg font-normal leading-normal text-primary">
+                        © 2022 | Nafiz
+                    </p>
+                </div>
+            </main>
 
             <form onSubmit={sendMessage}>
                 <div className="fixed inset-x-0 mb-4 bottom-12 h-12 flex justify-center">
@@ -158,6 +155,7 @@ function ChatRoom() {
                         value={formValue}
                         onChange={(e) => setFormValue(e.target.value)}
                         placeholder="Say something nice"
+                        maxlength="1000"
                     />
 
                     <button
@@ -177,18 +175,20 @@ function ChatMessage(props) {
     const { text, uid, photoURL } = props.message;
 
     const messageClass =
-        uid === auth.currentUser.uid ? "justify-end flex-row-reverse text-right" : "justify-start";
+        uid === auth.currentUser.uid
+            ? "flex-row-reverse text-right ml-auto bg-greenOverlay p-2"
+            : "mr-auto justify-start bg-[#e5e5ea] p-2";
+
+    const imgProp = uid === auth.currentUser.uid ? "ml-3" : "mr-3";
 
     return (
-        <div className="w-full flex items-center justify-center">
-            <div className="w-full p-3">
-                <div className={`flex items-center ${messageClass}`}>
-                    <img
-                        className="rounded-full h-10 mr-4 ml-4"
-                        src={photoURL || "https://api.adorable.io/avatars/23/abott@adorable.png"}
-                    />
-                    <p className="w-full">{text}</p>
-                </div>
+        <div className="w-full p-1 lg:p-2">
+            <div className={`flex items-center ${messageClass} w-fit rounded-lg`}>
+                <img
+                    className={`rounded-full h-12 ${imgProp}`}
+                    src={photoURL || "https://api.adorable.io/avatars/23/abott@adorable.png"}
+                />
+                <p className="max-w-xs lg:max-w-4xl text-base break-words">{text}</p>
             </div>
         </div>
     );
