@@ -1,4 +1,4 @@
-# React Firebase PearChat
+# PearChat
 
 A simple fullstack chat demo with React, Tailwind, and Firebase. 
 
